@@ -4,9 +4,15 @@
   "description": "Sample server for Azure Cognitive Search custom skill",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node -r dotenv/config ."
   },
   "keywords": [],
   "author": "chstone@microsoft.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1"
+  }
 }

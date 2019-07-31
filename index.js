@@ -1,44 +1,47 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const axios = require('axios');
 
 const PORT = 8080;
 
+async function translate(text, lang) {
+  const data = (Array.isArray(text) ? text.slice(0, 100) : [text])
+    .map((x) => ({ Text: x.substring(0, 100) }));
+  console.log(data);
+  const url = 'https://api.cognitive.microsofttranslator.com/translate';
+  const resp = await axios.post(url, data, {
+    headers: {
+      'Ocp-Apim-Subscription-Key': process.env.TRANSLATE_KEY,
+      'Ocp-Apim-Subscription-Region': process.env.TRANSLATE_REGION,
+    },
+    params: {
+      'api-version': '3.0',
+      to: lang,
+    },
+  });
+
+  return resp.data.map((x) => x.Text);
+}
+
 // start a web server
 express()
-	.post('/', bodyParser.json(), (req, res, next) => {
+  .post('/', bodyParser.json({ limit: '100mb' }), async (req, res, next) => {
 
+    try {
+      console.log(`Processing ${req.body.values.length} records`);
 
-    console.log(`Processing ${req.data.values.length} records`);
+      const lang = req.headers['accept-language'] || 'en';
+      const translated = await translate(req.body.values.map((x) => x.data.text), lang);
+      for (let i = 0; i < req.body.values.length; i += 1) {
+        req.body.values.data.text = translated[i];
+      }
 
-    // process each documet in the input array
-    const processed = req.data.values.map((doc) => {
-      const {
-        recordId,
-        data: {
-          isAdult,
-          startYear,
-          endYear,
-          runtimeMinutes,
-          genres } } = doc;
+      res.status(200).json(req.body);
 
-      // cleanup bools, numbers, and arrays
-      isAdult = isAdult === '1';
-      startYear = parseInt(startYear) || -1;
-      endYear = parseInt(endYear) || -1;
-      runtimeMinutes = parseInt(runtimeMinutes) || -1;
-      genres = genres.split(',');
+    } catch (err) {
+      next(err);
+    }
 
-      // output record may include errorrs or warnings
-      return {
-        recordId,
-        data: { isAdult, startYear, endYear, runtimeMinutes, genres },
-        warnings: null,
-        errors: null,
-      };
-    });
-
-    // return the processed content
-    res.status(200).json(processed);
 
   })
   .listen(PORT, () => console.log(`Listening on port ${PORT}`));
