@@ -33,7 +33,7 @@ express()
       const lang = req.headers['accept-language'] || 'en';
       const translated = await translate(req.body.values.map((x) => x.data.text), lang);
       for (let i = 0; i < req.body.values.length; i += 1) {
-        req.body.values.data.text = translated[i];
+        req.body.values[i].data.text = translated[i];
       }
 
       res.status(200).json(req.body);
