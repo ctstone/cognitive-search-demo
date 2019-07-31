@@ -7,7 +7,6 @@ const PORT = 8080;
 async function translate(text, lang) {
   const data = (Array.isArray(text) ? text.slice(0, 100) : [text])
     .map((x) => ({ Text: x.substring(0, 100) }));
-  console.log(data);
   const url = 'https://api.cognitive.microsofttranslator.com/translate';
   const resp = await axios.post(url, data, {
     headers: {
@@ -20,7 +19,7 @@ async function translate(text, lang) {
     },
   });
 
-  return resp.data.map((x) => x.Text);
+  return resp.data.map((x) => x.translations[0].text);
 }
 
 // start a web server
@@ -35,6 +34,8 @@ express()
       for (let i = 0; i < req.body.values.length; i += 1) {
         req.body.values[i].data.text = translated[i];
       }
+
+      console.dir(req.body.values, { depth: 10 });
 
       res.status(200).json(req.body);
 
