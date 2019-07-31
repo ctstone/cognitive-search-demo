@@ -7,6 +7,9 @@ const PORT = 8080;
 express()
 	.post('/', bodyParser.json(), (req, res, next) => {
 
+
+    console.log(`Processing ${req.data.values.length} records`);
+
     // process each documet in the input array
     const processed = req.data.values.map((doc) => {
       const {
