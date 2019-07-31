@@ -5,9 +5,12 @@ const { pipeline, Transform } = require('stream');
 
 const COLUMNS = ['tconst', 'titleType', 'primaryTitle', 'originalTitle', 'isAdult', 'startYear', 'endYear', 'runtimeMinutes', 'genres'];
 const NIL = '\\N';
+const INDEX_NAME = 'imdb';
 const INDEX = new SearchService(process.env.SEARCH_SERVICE, process.env.SEARCH_KEY)
   .indexes
-  .use('imdb');
+  .use(INDEX_NAME);
+
+let count = 0;
 
 pipeline(
   createReadStream('./data/title.basics.tsv'),
@@ -22,7 +25,7 @@ pipeline(
   (err) => {
     if (err) { console.error(err); }
   }
-).on('data', (d) => console.log(d.length));
+).on('data', (d) => console.log(count += d.length));
 
 function mapTitleBasic(obj) {
   const {
