@@ -1,0 +1,118 @@
+{
+  "@odata.context": "https://mckinsey-search.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8D6D3FBA911CDC8\"",
+  "name": "image-indexer",
+  "description": null,
+  "dataSourceName": "blobs",
+  "skillsetName": "image-skills",
+  "targetIndexName": "image-content",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": null,
+    "maxFailedItemsPerBatch": null,
+    "base64EncodeKeys": null,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "imageAction": "generateNormalizedImages"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "key",
+      "mappingFunction": {
+        "name": "base64Encode",
+        "parameters": {}
+      }
+    },
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "path",
+      "mappingFunction": null
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/normalized_images/*",
+      "targetFieldName": "images",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/categories/*/name",
+      "targetFieldName": "categories",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/categories/*/detail/celebrities/*/name",
+      "targetFieldName": "celebrities",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/categories/*/detail/landmarks/*/name",
+      "targetFieldName": "landmarks",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/description/tags/*",
+      "targetFieldName": "tags",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/description/captions/*/text",
+      "targetFieldName": "captions",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/metadata",
+      "targetFieldName": "metadata",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/faces/*",
+      "targetFieldName": "faces",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/faces/*/gender",
+      "targetFieldName": "genders",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/color/dominantColorForeground",
+      "targetFieldName": "colorForeground",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/color/dominantColorBackground",
+      "targetFieldName": "colorBackground",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/color/dominantColors/*",
+      "targetFieldName": "dominantColors",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/color/accentColor",
+      "targetFieldName": "accentColor",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/color/isBWImage",
+      "targetFieldName": "isBwImage",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/imageType/clipArtType",
+      "targetFieldName": "clipArtType",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/imageType/lineDrawingType",
+      "targetFieldName": "lineDrawingType",
+      "mappingFunction": null
+    }
+  ]
+}

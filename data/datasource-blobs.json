@@ -1,0 +1,17 @@
+{
+  "@odata.context": "https://mckinsey-search.search.windows.net/$metadata#datasources/$entity",
+  "@odata.etag": "\"0x8D70FC5E4A212FE\"",
+  "name": "blobs",
+  "description": "mckinseyblob",
+  "type": "azureblob",
+  "subtype": null,
+  "credentials": {
+    "connectionString": null
+  },
+  "container": {
+    "name": "demo",
+    "query": null
+  },
+  "dataChangeDetectionPolicy": null,
+  "dataDeletionDetectionPolicy": null
+}

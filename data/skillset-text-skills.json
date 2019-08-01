@@ -1,0 +1,169 @@
+{
+  "@odata.context": "https://mckinsey-search.search.windows.net/$metadata#skillsets/$entity",
+  "@odata.etag": "\"0x8D70FC5E5DEC409\"",
+  "name": "text-skills",
+  "description": null,
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
+      "name": "#1",
+      "description": null,
+      "context": "/document",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content",
+          "sourceContext": null,
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "languageCode",
+          "targetName": "lang"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+      "name": "#2",
+      "description": null,
+      "context": "/document",
+      "categories": [
+        "Person",
+        "Location",
+        "Organization",
+        "Quantity",
+        "Datetime",
+        "URL",
+        "Email"
+      ],
+      "defaultLanguageCode": "en",
+      "minimumPrecision": null,
+      "includeTypelessEntities": true,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content",
+          "sourceContext": null,
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "persons",
+          "targetName": "persons"
+        },
+        {
+          "name": "locations",
+          "targetName": "locations"
+        },
+        {
+          "name": "organizations",
+          "targetName": "organizations"
+        },
+        {
+          "name": "quantities",
+          "targetName": "quantities"
+        },
+        {
+          "name": "dateTimes",
+          "targetName": "dateTimes"
+        },
+        {
+          "name": "urls",
+          "targetName": "urls"
+        },
+        {
+          "name": "emails",
+          "targetName": "emails"
+        },
+        {
+          "name": "namedEntities",
+          "targetName": "namedEntities"
+        },
+        {
+          "name": "entities",
+          "targetName": "entities"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+      "name": "#3",
+      "description": null,
+      "context": "/document",
+      "defaultLanguageCode": "en",
+      "textSplitMode": "pages",
+      "maximumPageLength": 10000,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content",
+          "sourceContext": null,
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "textItems",
+          "targetName": "pages"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
+      "name": "#4",
+      "description": null,
+      "context": "/document",
+      "inputs": [
+        {
+          "name": "category",
+          "source": "/document/namedEntities/*/category",
+          "sourceContext": null,
+          "inputs": []
+        },
+        {
+          "name": "value",
+          "source": "/document/namedEntities/*/value",
+          "sourceContext": null,
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "targetName": "namedEntitiesSimple"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+      "name": "#5",
+      "description": null,
+      "context": "/document",
+      "defaultLanguageCode": "en",
+      "maxKeyPhraseCount": null,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content",
+          "sourceContext": null,
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keyPhrases",
+          "targetName": "keyPhrases"
+        }
+      ]
+    }
+  ],
+  "cognitiveServices": {
+    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
+    "description": "/subscriptions/2ad17db4-e26d-4c9e-999e-adae9182530c/resourceGroups/chstone-mckinsey/providers/Microsoft.CognitiveServices/accounts/mckinsey-cognitive",
+    "key": "b5e102e97dde4cdcbfda11662d05e765"
+  },
+  "knowledgeStore": null
+}

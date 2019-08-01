@@ -1,0 +1,117 @@
+{
+  "@odata.context": "https://mckinsey-search.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8D6D2E68852B17B\"",
+  "name": "text-indexer",
+  "description": null,
+  "dataSourceName": "blobs",
+  "skillsetName": "text-skills",
+  "targetIndexName": "text-content",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": null,
+    "maxFailedItemsPerBatch": null,
+    "base64EncodeKeys": false,
+    "configuration": {
+      "indexedFileNameExtensions": ".pptx,.pdf,.docx,.PDF,.txt"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "key",
+      "mappingFunction": {
+        "name": "base64Encode",
+        "parameters": {}
+      }
+    },
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "path",
+      "mappingFunction": null
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/lang",
+      "targetFieldName": "lang",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/persons",
+      "targetFieldName": "persons",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/locations",
+      "targetFieldName": "locations",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/organizations",
+      "targetFieldName": "organizations",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/quantities",
+      "targetFieldName": "quantities",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/dateTimes",
+      "targetFieldName": "dateTimes",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/urls",
+      "targetFieldName": "urls",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/emails",
+      "targetFieldName": "emails",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/pages",
+      "targetFieldName": "pages",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/namedEntitiesSimple/category/*",
+      "targetFieldName": "namedEntityCategories",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/namedEntitiesSimple/value/*",
+      "targetFieldName": "namedEntityValues",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/entities/*/name",
+      "targetFieldName": "entityNames",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/entities/*/wikipediaUrl",
+      "targetFieldName": "entityWikis",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/entities/*/type",
+      "targetFieldName": "entityTypes",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/entities/*/subType",
+      "targetFieldName": "entitySubTypes",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/keyPhrases/*",
+      "targetFieldName": "keyPhrases",
+      "mappingFunction": null
+    }
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "@odata.context": "https://mckinsey-search.search.windows.net/$metadata#indexes/$entity",
+  "@odata.etag": "\"0x8D6DD3717236F1E\"",
+  "name": "complex-test",
+  "defaultScoringProfile": null,
+  "fields": [
+    {
+      "name": "key",
+      "type": "Edm.String",
+      "searchable": false,
+      "filterable": true,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": true,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "analyzer": null,
+      "synonymMaps": []
+    },
+    {
+      "name": "name",
+      "type": "Edm.ComplexType",
+      "fields": [
+        {
+          "name": "first",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        },
+        {
+          "name": "last",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        },
+        {
+          "name": "another",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": true,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        }
+      ]
+    },
+    {
+      "name": "children",
+      "type": "Collection(Edm.ComplexType)",
+      "fields": [
+        {
+          "name": "name",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        },
+        {
+          "name": "age",
+          "type": "Edm.Int32",
+          "searchable": false,
+          "filterable": true,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        }
+      ]
+    },
+    {
+      "name": "foo",
+      "type": "Edm.ComplexType",
+      "fields": [
+        {
+          "name": "bar",
+          "type": "Edm.ComplexType",
+          "fields": [
+            {
+              "name": "xxx",
+              "type": "Collection(Edm.ComplexType)",
+              "fields": [
+                {
+                  "name": "a",
+                  "type": "Edm.String",
+                  "searchable": false,
+                  "filterable": true,
+                  "retrievable": true,
+                  "sortable": false,
+                  "facetable": true,
+                  "key": false,
+                  "indexAnalyzer": null,
+                  "searchAnalyzer": null,
+                  "analyzer": null,
+                  "synonymMaps": []
+                },
+                {
+                  "name": "b",
+                  "type": "Edm.String",
+                  "searchable": false,
+                  "filterable": true,
+                  "retrievable": true,
+                  "sortable": false,
+                  "facetable": true,
+                  "key": false,
+                  "indexAnalyzer": null,
+                  "searchAnalyzer": null,
+                  "analyzer": null,
+                  "synonymMaps": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "int32",
+      "type": "Edm.Int32",
+      "searchable": false,
+      "filterable": true,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "analyzer": null,
+      "synonymMaps": []
+    },
+    {
+      "name": "int64",
+      "type": "Edm.Int64",
+      "searchable": false,
+      "filterable": true,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "analyzer": null,
+      "synonymMaps": []
+    },
+    {
+      "name": "double",
+      "type": "Edm.Double",
+      "searchable": false,
+      "filterable": true,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "analyzer": null,
+      "synonymMaps": []
+    },
+    {
+      "name": "boolean",
+      "type": "Edm.Boolean",
+      "searchable": false,
+      "filterable": true,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "analyzer": null,
+      "synonymMaps": []
+    },
+    {
+      "name": "date",
+      "type": "Edm.DateTimeOffset",
+      "searchable": false,
+      "filterable": true,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "analyzer": null,
+      "synonymMaps": []
+    },
+    {
+      "name": "geo",
+      "type": "Edm.GeographyPoint",
+      "searchable": false,
+      "filterable": true,
+      "retrievable": true,
+      "sortable": true,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "analyzer": null,
+      "synonymMaps": []
+    },
+    {
+      "name": "strings",
+      "type": "Collection(Edm.String)",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "analyzer": null,
+      "synonymMaps": []
+    },
+    {
+      "name": "suggest1",
+      "type": "Edm.ComplexType",
+      "fields": [
+        {
+          "name": "name",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        }
+      ]
+    },
+    {
+      "name": "suggest2",
+      "type": "Collection(Edm.ComplexType)",
+      "fields": [
+        {
+          "name": "stuff",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        }
+      ]
+    },
+    {
+      "name": "suggest3",
+      "type": "Edm.ComplexType",
+      "fields": [
+        {
+          "name": "name",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        }
+      ]
+    },
+    {
+      "name": "suggest4",
+      "type": "Collection(Edm.ComplexType)",
+      "fields": [
+        {
+          "name": "foo",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        }
+      ]
+    },
+    {
+      "name": "complex1",
+      "type": "Edm.ComplexType",
+      "fields": [
+        {
+          "name": "name",
+          "type": "Edm.String",
+          "searchable": false,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": true,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        }
+      ]
+    }
+  ],
+  "scoringProfiles": [
+    {
+      "name": "sp1",
+      "functionAggregation": "sum",
+      "text": {
+        "weights": {
+          "name/first": 10,
+          "suggest1/name": 1,
+          "suggest2/stuff": 2,
+          "suggest3/name": 3,
+          "suggest4/foo": 4
+        }
+      },
+      "functions": []
+    }
+  ],
+  "corsOptions": null,
+  "suggesters": [
+    {
+      "name": "suggest1",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": [
+        "suggest3/name",
+        "suggest4/foo"
+      ]
+    }
+  ],
+  "analyzers": [],
+  "tokenizers": [],
+  "tokenFilters": [],
+  "charFilters": [],
+  "encryptionKey": null
+}

@@ -1,0 +1,49 @@
+{
+  "@odata.context": "https://mckinsey-search.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8D6D2F77DC75CEE\"",
+  "name": "text-ocr-content",
+  "description": null,
+  "dataSourceName": "blobs",
+  "skillsetName": "ocr-skills",
+  "targetIndexName": "text-ocr-content",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": null,
+    "maxFailedItemsPerBatch": null,
+    "base64EncodeKeys": null,
+    "configuration": {
+      "indexedFileNameExtensions": ".png,.jpg,.pdf",
+      "dataToExtract": "contentAndMetadata",
+      "imageAction": "generateNormalizedImages"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "path",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "key",
+      "mappingFunction": {
+        "name": "base64Encode",
+        "parameters": {}
+      }
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/normalized_images/*/text",
+      "targetFieldName": "ocrText",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*",
+      "targetFieldName": "images",
+      "mappingFunction": null
+    }
+  ]
+}

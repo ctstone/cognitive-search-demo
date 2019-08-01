@@ -1,0 +1,89 @@
+{
+  "@odata.context": "https://mckinsey-search.search.windows.net/$metadata#skillsets/$entity",
+  "@odata.etag": "\"0x8D70FC5E589B6D0\"",
+  "name": "image-skills",
+  "description": null,
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Vision.ImageAnalysisSkill",
+      "name": "#1",
+      "description": null,
+      "context": "/document/normalized_images/*",
+      "defaultLanguageCode": "en",
+      "visualFeatures": [
+        "Categories",
+        "Tags",
+        "Description",
+        "Faces",
+        "ImageType",
+        "Color",
+        "Adult"
+      ],
+      "details": [
+        "Celebrities",
+        "Landmarks"
+      ],
+      "inputs": [
+        {
+          "name": "image",
+          "source": "/document/normalized_images/*",
+          "sourceContext": null,
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "categories",
+          "targetName": "categories"
+        },
+        {
+          "name": "tags",
+          "targetName": "tags"
+        },
+        {
+          "name": "description",
+          "targetName": "description"
+        },
+        {
+          "name": "faces",
+          "targetName": "faces"
+        },
+        {
+          "name": "imageType",
+          "targetName": "imageType"
+        },
+        {
+          "name": "color",
+          "targetName": "color"
+        }
+      ]
+    }
+  ],
+  "cognitiveServices": {
+    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
+    "description": "/subscriptions/2ad17db4-e26d-4c9e-999e-adae9182530c/resourceGroups/chstone-mckinsey/providers/Microsoft.CognitiveServices/accounts/mckinsey-cognitive",
+    "key": "b5e102e97dde4cdcbfda11662d05e765"
+  },
+  "knowledgeStore": {
+    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=mckinseyblob;AccountKey=S94aTVuqF6eNVHcYszIBgrWvkUaswQj2RXey+AozRr5JXUAZDKcnUA6FaOJSUDtVebGjTyVZ++Svkwyq4yr0ww==;EndpointSuffix=core.windows.net",
+    "projections": [
+      {
+        "tables": [],
+        "objects": [
+          {
+            "storageContainer": "images",
+            "source": "/document",
+            "sourceContext": null,
+            "inputs": []
+          },
+          {
+            "storageContainer": "foo",
+            "source": "/document/normalized_images",
+            "sourceContext": null,
+            "inputs": []
+          }
+        ]
+      }
+    ]
+  }
+}
