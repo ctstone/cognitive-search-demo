@@ -62,10 +62,10 @@
   "cognitiveServices": {
     "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
     "description": "/subscriptions/2ad17db4-e26d-4c9e-999e-adae9182530c/resourceGroups/chstone-mckinsey/providers/Microsoft.CognitiveServices/accounts/mckinsey-cognitive",
-    "key": "b5e102e97dde4cdcbfda11662d05e765"
+    "key": ""
   },
   "knowledgeStore": {
-    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=mckinseyblob;AccountKey=S94aTVuqF6eNVHcYszIBgrWvkUaswQj2RXey+AozRr5JXUAZDKcnUA6FaOJSUDtVebGjTyVZ++Svkwyq4yr0ww==;EndpointSuffix=core.windows.net",
+    "storageConnectionString": "DefaultEndpointsProtocol",
     "projections": [
       {
         "tables": [],
